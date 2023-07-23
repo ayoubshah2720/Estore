@@ -3,10 +3,11 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, Image, StyleSheet, TouchableOpacity, ActivityIndicator } from 'react-native';
 import HomeSlider from '../../Constants/HomeSlider/HomeSlider';
 import HeaderScreen from '../Header/HeaderScreem';
+import { useNavigation } from '@react-navigation/native';
 
-const AllProducts = props => {
+const AllProducts = () => {
   const [products, setProducts] = useState([]);
-  const { navigation } = props
+  const navigation = useNavigation()
 
   useEffect(() => {
     fetchProducts();
@@ -24,7 +25,7 @@ const AllProducts = props => {
   };
 
   const handleProduct = (product) => {
-    // navigation.navigate('SingleProduct',product)
+    navigation.navigate('SingleProduct',product)
     console.log('product',product);
   }
   const renderProductItem = ({ item }) => (
@@ -77,6 +78,7 @@ const styles = StyleSheet.create({
     // flexGrow: 1,
     alignItems: 'center',
     justifyContent: 'space-between',
+    // marginHorizontal:20,
   },
   productItem: {
     // flex: 1,
@@ -93,7 +95,7 @@ const styles = StyleSheet.create({
     width: 150,
     height: 150,
     marginBottom: 10,
-    marginHorizontal:10,
+    // marginHorizontal:10,
     // borderRadius: 20,
     borderWidth:1,
     borderBottomColor:'#33907C'

@@ -1,6 +1,10 @@
 import React, { useEffect } from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import HeaderScreen from '../Header/HeaderScreem';
+import Entypo from 'react-native-vector-icons/Entypo';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import Feather from 'react-native-vector-icons/Feather';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const SingleProduct = ({ route, navigation }) => {
   // const product  = route.params;
@@ -22,12 +26,21 @@ const SingleProduct = ({ route, navigation }) => {
       <View style={styles.productTop}>
         <View style={styles.iconsViewMain}>
           <View style={styles.iconsViewLeft}>
-            <View style={styles.iconsView}></View>
+            <View style={styles.iconsView}>
+              <Ionicons name="arrow-back" size={25} color="#fff" />
+            </View>
           </View>
           <View style={styles.iconsViewRight}>
-            <View style={styles.iconsView}></View>
-            <View style={styles.iconsView}></View>
-            <View style={styles.iconsView}></View>
+            <View style={styles.iconsView}>
+              <Feather name="share-2" size={25} color="#fff" />
+            </View>
+            <View style={styles.iconsView}>
+              <FontAwesome name="heart-o" size={25} color="#fff" />
+            </View>
+            <View style={styles.iconsView}>
+              {/* <FontAwesome name="rocket" size={30} color="#fff" /> */}
+              <Entypo name="dots-three-vertical" size={25} color="#fff" />
+            </View>
           </View>
         </View>
         <Image source={{ uri: product.image }} style={styles.productImage} resizeMode="contain" />
@@ -45,9 +58,9 @@ const SingleProduct = ({ route, navigation }) => {
         <Text style={styles.description}> {product.description} </Text>
       </View>
     </View>
-      <View style={styles.addToCartView}>
+      <TouchableOpacity onPress={()=> navigation.navigate('Cart')} style={styles.addToCartView}>
       <Text style={styles.addToCart}> Add to cart </Text>
-      </View>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -63,7 +76,8 @@ const styles = StyleSheet.create({
   },
   mainBody:{
     flexDirection:'column',
-    justifyContent:'space-between'
+    justifyContent:'space-between',
+    marginHorizontal:20
   },
   iconsViewMain: {
     width: '100%',
@@ -78,9 +92,11 @@ const styles = StyleSheet.create({
   iconsView: {
     width: 50,
     height: 50,
-    backgroundColor: '#fefefe',
+    backgroundColor: '#AEB2B5',
     borderRadius: 50,
-    opacity:0.75
+    opacity:0.75,
+    alignItems:'center',
+    justifyContent:'center'
   },
   iconsViewRight: {
     flexDirection: 'row',
@@ -144,10 +160,11 @@ const styles = StyleSheet.create({
     fontSize:20,
     fontWeight:'700',
     width:'80%',
-    padding:20,
+    padding:15,
     backgroundColor:'#33907C',
     textAlign:'center',
     borderRadius:50,
+    marginVertical:20
   }
 });
 

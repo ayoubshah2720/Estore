@@ -2,8 +2,11 @@ import { Image, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import HeaderScreen from '../Header/HeaderScreem'
 import Images from '../../Constants/Images'
+import { TouchableOpacity } from 'react-native-gesture-handler'
+import { useNavigation } from '@react-navigation/native'
 
 const Cart = () => {
+    const navigation = useNavigation()
     return (
         <View style={styles.container}>
             <View style={styles.headerContainer}>
@@ -11,10 +14,10 @@ const Cart = () => {
             </View>
             <View style={styles.bodyContainerMain}>
             <View style={styles.bodyContainer}>
-            <View style={styles.addressContainer}>
+            <TouchableOpacity style={styles.addressContainer} onPress={()=> navigation.navigate('Address')}>
                 <Text style={styles.addressText}>+</Text>
                 <Text style={styles.addressText}>Add New Address</Text>
-            </View>
+            </TouchableOpacity>
             <View style={styles.singleItemView}>
                 <Image source={Images.cocaCola} style={styles.productImg} />
                 <View style={styles.itemDetail}>

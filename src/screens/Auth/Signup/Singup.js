@@ -1,7 +1,10 @@
 import { StyleSheet, Text, TextInput, View } from 'react-native'
 import React from 'react'
+import { TouchableOpacity } from 'react-native-gesture-handler'
+import { useNavigation } from '@react-navigation/native'
 
 const Signup = () => {
+    const navigation = useNavigation()
   return (
       <View style={styles.container}>
           <View style={styles.mainBody}>
@@ -18,12 +21,14 @@ const Signup = () => {
                 <TextInput style={styles.loginInput} keyboardType='numeric' placeholderTextColor='#fff' placeholder='Password'/>
                 <TextInput style={styles.loginInput} keyboardType='numeric' placeholderTextColor='#fff' placeholder='Re-enter Password'/>
               </View>
-              <View style={styles.loginBtnBody}>
+              <TouchableOpacity style={styles.loginBtnBody} onPress={()=> navigation.navigate('Signin')}>
                 <Text style={styles.loginBtn}> Create </Text>
-              </View>
+              </TouchableOpacity>
               <View style={styles.signupBody}>
                 <Text style={styles.signupText}> Have an account? </Text>
+                <TouchableOpacity onPress={()=> navigation.navigate('Signin')}>
                 <Text style={styles.signupText1}> Signin </Text>
+                </TouchableOpacity>
               </View>
           </View>
       </View>
@@ -35,7 +40,7 @@ export default Signup
 const styles = StyleSheet.create({
     container:{
         // flex:1,
-        height:760,
+        height:820,
         backgroundColor:'#33907C'
     },
     titleBody:{

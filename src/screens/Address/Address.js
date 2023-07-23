@@ -2,8 +2,10 @@ import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'reac
 import React from 'react'
 import HeaderScreen from '../Header/HeaderScreem'
 import Images from '../../Constants/Images'
+import { useNavigation } from '@react-navigation/native'
 
 const Address = () => {
+    const navigation = useNavigation()
   return (
     <View style={styles.container}>
         <View style={styles.headerContainer}>
@@ -40,7 +42,7 @@ const Address = () => {
         <TextInput style={styles.labelInput} keyboardType='numeric' placeholder='Zipcode'/>
     </View>
     </View>
-    <TouchableOpacity style={styles.bottomView}>
+    <TouchableOpacity onPress={()=> navigation.navigate('Cart')} style={styles.bottomView}>
         <Text style={styles.bottomBtn}> Save </Text>
     </TouchableOpacity>
     </View>
@@ -98,7 +100,7 @@ const styles = StyleSheet.create({
         backgroundColor:'#fff',
     },
     bottomBtn:{
-        backgroundColor:'#13B58C',
+        backgroundColor:'#33907C',
         color:'#fff',
         paddingVertical:10,
         marginHorizontal:40,

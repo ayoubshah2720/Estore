@@ -1,8 +1,12 @@
 import { StyleSheet, Text, TextInput, View } from 'react-native'
 import React from 'react'
+import { TouchableOpacity } from 'react-native-gesture-handler'
+import { useNavigation } from '@react-navigation/native'
 
 const Signin = () => {
-  return (
+    const navigation = useNavigation()
+    
+    return (
       <View style={styles.container}>
           <View style={styles.mainBody}>
               <View style={styles.titleBody}>
@@ -15,15 +19,17 @@ const Signin = () => {
                 <TextInput style={styles.loginInput} placeholderTextColor='#fff' placeholder='Email/Mobile number'/>
                 <TextInput style={styles.loginInput} keyboardType='numeric' placeholderTextColor='#fff' placeholder='Password'/>
               </View>
-              <View style={styles.loginBtnBody}>
+              <TouchableOpacity style={styles.loginBtnBody} onPress={()=> navigation.navigate('Home')}>
                 <Text style={styles.loginBtn}> Login </Text>
-              </View>
+                </TouchableOpacity>
               <View style={styles.forgetBody}>
                 <Text style={styles.forgetText}> Forget your password? </Text>
               </View>
               <View style={styles.signupBody}>
                 <Text style={styles.signupText}> Don't have an account? </Text>
+                <TouchableOpacity onPress={()=> navigation.navigate('Signup')}>
                 <Text style={styles.signupText1}> Signup </Text>
+                </TouchableOpacity>
               </View>
           </View>
       </View>
@@ -35,7 +41,7 @@ export default Signin
 const styles = StyleSheet.create({
     container:{
         // flex:1,
-        height:760,
+        height:820,
         backgroundColor:'#33907C'
     },
     titleBody:{
